@@ -25,13 +25,12 @@ var connection = mysql.createConnection({
 
             var Results = [
                 
-                "ID:" + res[i].item_id,
-                "Product:" + res[i].product_name,
-                "Price:" + res[i].price,
+                "Product ID: " + res[i].item_id,
+                "Name of Product: " + res[i].product_name,
+                "Price: " + res[i].price,
+                "Stock Quantity: " + res[i].stock_quantity,
                 
-            ].join("-");
-
-            
+            ]
             console.log(Results); 
             
         }
