@@ -39,13 +39,53 @@ var connection = mysql.createConnection({
 function prompt() {
     inquirer
     .prompt({
-        name: "artist",
+        name: "product",
         type: "input",
         message: "What product would you like to buy?"
-      })
+      }),
 
-      inquirer.prompt([{
+      inquirer
+      .prompt([{
         type: 'input',
-        name: 'input',
+        name: 'quantity',
         message: "How many units would you like to buy?"
     }])
+
+    .then(function (answer) {
+        if ((res[id].stock_quantity - answer.quant) > 0) {
+            connection.query("UPDATE products SET stock_quantity='" + 
+            (res[id].stock_quantity - answer.quant) + 
+            "'WHERE product_name='" + product + "'", function () {
+
+                create();
+                var totalCost = answer.quant * res[id].price;
+
+                var cResults = [
+                    
+                    "You Bought a Product",
+                    "TOTAL COST: $ " + totalCost,
+                
+
+                ].join("\n\n");
+
+                
+                console.log(cResults); 
+
+                
+            })
+            //if zero quanitity
+        } else {
+            console.log("Insufficient quantity!" + "\n");
+            prompt(res);
+        }
+
+    })
+}
+
+//If input does not match
+if (i == res.length && correct == false) {
+console.log("Wrong Choice!" + "\n");
+prompt(res);
+}
+
+
