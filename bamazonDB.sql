@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS bamazonDB;
 CREATE DATABASE bamazonDB;
 USE bamazonDB;
@@ -13,7 +12,6 @@ CREATE TABLE Products (
   primary key (item_id)
 );
 
--
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Makeup Brush Set", "Beauty", 9.99, 1000);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
