@@ -1,9 +1,9 @@
---Initialize bamazon database and select it --
+
 DROP DATABASE IF EXISTS bamazonDB;
 CREATE DATABASE bamazonDB;
 USE bamazonDB;
 
--- Create products table with requested columns --
+
 CREATE TABLE Products (
   item_id INTEGER(10) AUTO_INCREMENT NOT NULL,
   product_name VARCHAR(50) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE Products (
   primary key (item_id)
 );
 
--- Added 10 dummy rows --
+-
 INSERT INTO products (product_name, department_name, price, stock_quantity)
 VALUES ("Makeup Brush Set", "Beauty", 9.99, 1000);
 INSERT INTO products (product_name, department_name, price, stock_quantity)
