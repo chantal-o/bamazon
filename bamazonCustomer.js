@@ -16,7 +16,7 @@ var connection = mysql.createConnection({
   });
 
   //reference activity-topSongsAndAlbumsCode.js
-
+  // Display all of the items available for sale
   var createTable = function () {
     connection.query("SELECT * FROM products", function (err, res) {
 
@@ -35,3 +35,17 @@ var connection = mysql.createConnection({
         prompt(res);
     })
 }
+//inquirer prompts for passing in questions
+function prompt() {
+    inquirer
+    .prompt({
+        name: "artist",
+        type: "input",
+        message: "What product would you like to buy?"
+      })
+
+      inquirer.prompt([{
+        type: 'input',
+        name: 'input',
+        message: "How many units would you like to buy?"
+    }])
