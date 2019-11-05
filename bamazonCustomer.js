@@ -54,7 +54,7 @@ function buyprompt() {
             switch(command) {
                 //choice will begin database query
                 case "Make a Purchase":
-                    itemprompt();
+                    itemPrompt();
                 break;
                 
                 // choice will end the connection
@@ -66,7 +66,7 @@ function buyprompt() {
 
 
 //inquirer prompts for passing in questions
-function itemprompt() {
+function itemPrompt() {
     inquirer
     .prompt([
         {
@@ -100,9 +100,9 @@ function itemprompt() {
                 cost = res[0].price * parseInt(answer.quantity);
                 
                 // Make UPDATE query to database to subtract necessary amount from stock_quantity
-                connection.query("UPDATE products SET ? WHERE ?",
+                connection.query("UPDATE products SET SET stock_quantity =" + ,
                 [{
-                    stock_quantity: res[0].stock_quantity - parseInt(answer.itemNum)
+                    stock_quantity: res[0].stock_quantity - parseInt(answer.quantity)
                 },
                 {
                     item_id: answer.itemID
@@ -112,7 +112,7 @@ function itemprompt() {
                     
                     // Log below message with total cost after successfully updating the database
                    
-                    console.log(`${res.affectedRows}  The total cost of your purchase was $${cost.toFixed(2)}.`);
+                    console.log(res.cost);
                     
 
                     // Call function to display all items in database again
